@@ -1,0 +1,14 @@
+papss:
+    system:
+        toClearingSystemId: XA0001
+server:
+    port: 8881
+springdoc:
+    api-docs:
+        enabled: true
+        path: /rest-api-docs
+    swagger-ui:
+        path: /swagger-ui
+ssl:
+    key:
+        alias: afxm2

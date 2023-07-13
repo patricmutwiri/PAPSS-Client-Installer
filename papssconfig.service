@@ -1,0 +1,15 @@
+[Unit]
+Description=PAPSS Configuration Service
+After=syslog.target
+
+[Service]
+User=papss
+Type=simple
+Restart=on-failure
+RestartSec=10
+WorkingDirectory=/app/papss
+ExecStart=/bin/java -Xms2048m -Xmx4096m -jar PAPSS-Configuration-Service-1.0.jar
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
