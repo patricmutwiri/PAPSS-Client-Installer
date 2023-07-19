@@ -1,9 +1,0 @@
-<service>
-    <id>PAPSS-Inbound-ISO-Service</id>
-    <name>PAPSS-Inbound-ISO-Service</name>
-    <description>PAPSS Inbound ISO Middleware as a Service.</description>
-    <env name="PAPSS-Inbound-ISO-Service_HOME" value="%BASE%"/>
-    <executable>java</executable>
-    <arguments>-Xmx2056m -jar "%BASE%\PAPSS-Inbound-ISO-Service-1.0.jar"</arguments>
-    <logmode>rotate</logmode>
-</service>

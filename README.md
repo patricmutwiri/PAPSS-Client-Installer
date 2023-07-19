@@ -1,4 +1,4 @@
-# PAPSS-Installer
+# PAPSS-Middleware-Installer
 
 ## Redhat Linux Installation
 
@@ -65,35 +65,53 @@
     sudo mv PAPSS-Installer-main/* . && sudo rm -r PAPSS-Installer-main
 
 ### Run PAPSS Installation Script
+    cd linux
     sudo chmod u+x papss-linux-installer.sh && ./papss-linux-installer.sh
 
 
 
     
-6. sudo unzip PAPSS-Installer-main.zip -d . && sudo rm PAPSS-Installer-main.zip
-7. sudo mv PAPSS-Installer-main/* . && sudo rm -r PAPSS-Installer-main
-8. sudo groupadd -r papss
-9. sudo useradd -r -s /bin/false -g papss papss
-10. id papss
-11. sudo mv papss-inbound-iso.service /etc/systemd/system/ && sudo chmod 0644 /etc/systemd/system/papss-inbound-iso.service
-12. sudo mv papss-outbound-iso.service /etc/systemd/system/ && sudo chmod 0644 /etc/systemd/system/papss-outbound-iso.service
-13. sudo chown -R papss:papss /app/papss
-14. sudo systemctl daemon-reload
-15. java -version
-16. sudo systemctl start papssoutbound.service
-17. sudo systemctl start papssinbound.service
-18. sudo systemctl status papssinbound.service
-19. sudo systemctl status papssoutbound.service
-
-20. sudo chmod 500 jar-files/PAPSS-Inbound-ISO-Service-1.0.jar
-21. sudo mv papss-inbound-iso.service /etc/systemd/system/ && sudo chmod 0644 /etc/systemd/system/papss-inbound-iso.service
-22. sudo mv papss-outbound-iso.service /etc/systemd/system/ && sudo chmod 0644 /etc/systemd/system/papss-outbound-iso.service
-23. sudo systemctl start papss-inbound-iso.service
-24. sudo systemctl start papss-outbound-iso.service
 
 
-12. 
-13. /bin/bash unzip "$(curl -fsSL https://github.com/PapssAfrica/PAPSS-Installer/archive/refs/heads/main.zip)" -d .
-14. sudo rm PAPSS-Installer-main.zip && rmdir PAPSS-Installer-main
+### Check status of Systemd Service
+sudo systemctl status papssinbound.service
+sudo systemctl status papssoutbound.service
+sudo systemctl status papssconfig.service
 
--rw-r--r--.
+
+<!-- ### Reset Systemd Service (If need be)
+
+sudo systemctl reset-failed -->
+
+
+## Windows Server 2019 Installation
+
+### Install Java Open JDK 17
+Installing OpenJDK with the MSI installer
+This procedure describes how to install OpenJDK 20 for Windows using the MSI-based installer.
+
+#### Procedure
+
+Download the MSI-based installer of OpenJDK 20 for Windows. https://adoptium.net/download/
+Run the installer for OpenJDK 20 for Windows.
+Click Next on the welcome screen.
+Check I accept the terms in license agreement, then click Next.
+Click Next.
+Accept the defaults or review the optional properties.
+Click Install.
+Click Yes on the Do you want to allow this app to make changes on your device?.
+Verify the OpenJDK 20 for Windows is successfully installed, run java -version command in the command prompt and you must get the following output:
+
+```openjdk version "17" 2021-09-14 LTS
+OpenJDK Runtime Environment 21.9 (build 17+35-LTS)
+OpenJDK 64-Bit Server VM 21.9 (build 17+35-LTS, mixed mode, sharing)
+``` 
+#### Tutorial https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/How-do-I-install-Java-on-Windows
+
+### Download and Install Postgres 14
+
+https://www.postgresql.org/download/windows/
+
+Password for default postgres user s3cr3t
+
+
