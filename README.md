@@ -61,8 +61,8 @@
     sudo curl -O -J -L https://github.com/PapssAfrica/PAPSS-Client-Installer/archive/refs/heads/main.zip
 
 ### Unzip files
-    sudo unzip PAPSS-Client-Installer.zip -d . && sudo rm PAPSS-Installer-main.zip
-    sudo mv PAPSS-Installer-main/* . && sudo rm -r PAPSS-Installer-main
+    sudo unzip PAPSS-Client-Installer.zip -d . && sudo rm PAPSS-Client-Installer-main.zip
+    sudo mv PAPSS-Client-Installer-main/* . && sudo rm -r PAPSS-Client-Installer-main
 
 ### Run PAPSS Installation Script
     cd linux
