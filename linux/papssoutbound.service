@@ -7,7 +7,7 @@ User=papss
 Type=simple
 Restart=on-failure
 RestartSec=10
-WorkingDirectory=/app/papss/lib
+WorkingDirectory=/var/papss/lib
 ExecStart=/bin/java -Xms2048m -Xmx4096m -jar PAPSS-Outbound-ISO-Service-1.0.jar
 SuccessExitStatus=143
 
