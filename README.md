@@ -173,7 +173,7 @@ Start the papssinbound.service
 Check status of the papssinbound.service 
     systemctl status papssinbound.service
 
-#### Validate PAPSS Outbound ISO Service is running
+#### Validate PAPSS Inbound ISO Service is running
     curl --location 'http://localhost:8881/papss/api/participantlist' \
     --header 'Content-Type: application/json' \
     --data '{
