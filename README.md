@@ -46,16 +46,17 @@
 
 [//]: # (    $ psql)
 
-
-### Make /app/papss and move to it
-    sudo mkdir –m777 -p /app/papss
-    $ cd /app/papss
-
 ### Install Unzip package
     sudo yum -y install unzip
 
 ### Install Java Software
     sudo yum -y install java-17-openjdk
+
+### Create PAPSS Middleware directory and cd to it
+    sudo mkdir –m777 -p /var/papss
+    cd /var/papss
+
+
 
 ### Get PAPSS Artifacts from GitHub
     sudo curl -O -J -L https://github.com/PapssAfrica/PAPSS-Client-Installer/archive/refs/heads/main.zip
@@ -63,6 +64,40 @@
 ### Unzip files
     sudo unzip PAPSS-Client-Installer-main.zip -d . && sudo rm PAPSS-Client-Installer-main.zip
     sudo mv PAPSS-Client-Installer-main/* . && sudo rm -r PAPSS-Client-Installer-main
+
+### Installing PAPSS Configuration Service as a systemd Service
+With the PAPSS-Configuration-Service-1.0.jar Spring Boot application installed in /var/papss/lib, to install it as a systemd service, create a script named papssconfig.service and place it in /etc/systemd/system directory. The following script offers an example:
+
+    vi /etc/systemd/system/papssconfig.service
+
+Copy and past the following to the `vi` terminal :
+
+    [Unit]
+    Description=PAPSS Configuration Service
+    After=syslog.target
+    
+    [Service]
+    User=papss
+    Type=simple
+    Restart=on-failure
+    RestartSec=10
+    WorkingDirectory=/var/papss/lib
+    ExecStart=/bin/java -Xms2048m -Xmx4096m -jar PAPSS-Configuration-Service-1.0.jar
+    SuccessExitStatus=143
+    
+    [Install]
+    WantedBy=multi-user.target
+
+Enable the papssconfig.service
+    systemctl enable papssconfig.service
+Start the papssconfig.service
+    systemctl start papssconfig.service
+Check status of the papssconfig.service
+    systemctl status papssconfig.service
+
+#### Validate Configuration Service is running
+    curl -u root:s3cr3t --request GET http://localhost:8888/papss-outbound-iso-service/native
+
 
 ### Run PAPSS Installation Script
     cd linux
@@ -88,9 +123,12 @@
     curl -u root:s3cr3t --request GET http://localhost:8888/papss-outbound-iso-service/native
 
 
-<!-- ### Reset Systemd Service (If need be)
+### Systemd Service Debug Commands
 
-sudo systemctl reset-failed -->
+Reset failed:
+    systemctl reset-failed
+Reload Daemon:
+    systemctl daemon-reload
 
 
 ## Windows Server 2019 Installation
