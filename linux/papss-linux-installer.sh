@@ -10,7 +10,7 @@ id papss
 #sudo chown -R root:root /etc/systemd/system/papssoutbound.service
 #sudo chown -R root:root /etc/systemd/system/papssconfig.service
 
-sudo chown -R papss:papss /app/papss
+sudo chown -R papss:papss /var/papss
 sudo systemctl daemon-reload
 
 java -version
