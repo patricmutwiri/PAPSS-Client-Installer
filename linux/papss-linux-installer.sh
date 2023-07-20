@@ -12,15 +12,16 @@ id papss
 
 sudo chown -R papss:papss /app/papss
 sudo systemctl daemon-reload
+
 java -version
 
-sudo systemctl start papssoutbound.service
-sudo systemctl start papssinbound.service
-sudo systemctl start papssconfig.service
+# sudo systemctl start papssoutbound.service
+# sudo systemctl start papssinbound.service
+# sudo systemctl start papssconfig.service
 
-sudo systemctl status papssinbound.service
-sudo systemctl status papssoutbound.service
-sudo systemctl status papssconfig.service
+# sudo systemctl status papssinbound.service
+# sudo systemctl status papssoutbound.service
+# sudo systemctl status papssconfig.service
 
 
 
