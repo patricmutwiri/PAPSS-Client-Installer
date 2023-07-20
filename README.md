@@ -65,6 +65,9 @@
     sudo unzip PAPSS-Client-Installer-main.zip -d . && sudo rm PAPSS-Client-Installer-main.zip
     sudo mv PAPSS-Client-Installer-main/* . && sudo rm -r PAPSS-Client-Installer-main
 
+### Run PAPSS Installation Script
+    sudo chmod u+x linux/papss-linux-installer.sh && ./linux/papss-linux-installer.sh  
+
 ### Installing PAPSS Configuration Service as a systemd Service
 With the PAPSS-Configuration-Service-1.0.jar Spring Boot application installed in /var/papss/lib, to install it as a systemd service, create a script named papssconfig.service and place it in /etc/systemd/system directory.
 
@@ -140,36 +143,49 @@ Check status of the papssoutbound.service
         "isOnline" : true
     }'
 
+### Installing PAPSS Inbound ISO Service as a systemd Service
+With the PAPSS-Inbound-ISO-Service-1.0.jar Spring Boot application installed in /var/papss/lib, to install it as a systemd service, create a script named papssinbound.service and place it in /etc/systemd/system directory.
 
+    vi /etc/systemd/system/papssinbound.service
 
+Copy and past the following to the `vi` terminal :
 
+    [Unit]
+    Description=PAPSS Inbound ISO Service
+    After=syslog.target
+    
+    [Service]
+    User=papss
+    Type=simple
+    Restart=on-failure
+    RestartSec=10
+    WorkingDirectory=/var/papss/lib
+    ExecStart=/bin/java -Xms2048m -Xmx4096m -jar PAPSS-Inbound-ISO-Service-1.0.jar
+    SuccessExitStatus=143
+    
+    [Install]
+    WantedBy=multi-user.target
+    
+Enable the papssinbound.service 
+    systemctl enable papssinbound.service 
+Start the papssinbound.service 
+    systemctl start papssinbound.service 
+Check status of the papssinbound.service 
+    systemctl status papssinbound.service
 
-### Run PAPSS Installation Script
-    cd linux
-    sudo chmod u+x papss-linux-installer.sh && ./papss-linux-installer.sh    
-
-### Enable services
-    systemctl enable papssconfig.service
-    systemctl enable papssoutbound.service
-    systemctl enable papssinbound.service
-
-### Start services
-    systemctl enable papssconfig.service
-    systemctl enable papssoutbound.service
-    systemctl enable papssinbound.service
-
-
-### Check status of Systemd Service
-    sudo systemctl status papssinbound.service
-    sudo systemctl status papssoutbound.service
-    sudo systemctl status papssconfig.service
-
-### Validate Configuration Service is running
-    curl -u root:s3cr3t --request GET http://localhost:8888/papss-outbound-iso-service/native
-
+#### Validate PAPSS Outbound ISO Service is running
+    curl --location 'http://localhost:8881/papss/api/participantlist' \
+    --header 'Content-Type: application/json' \
+    --data '{
+        "sender": {
+            "inst_id":"NG2020"
+        },
+        "inst_id":"NG2020",
+        "participant_type" : "BANK",
+        "isOnline" : true
+    }'
 
 ### Systemd Service Debug Commands
-
 Reset failed:
     systemctl reset-failed
 Reload Daemon:
