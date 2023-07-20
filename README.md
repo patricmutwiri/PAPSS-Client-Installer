@@ -69,23 +69,23 @@
     sudo chmod u+x papss-linux-installer.sh && ./papss-linux-installer.sh    
 
 ### Enable services
-systemctl enable papssconfig.service
-systemctl enable papssoutbound.service
-systemctl enable papssinbound.service
+    systemctl enable papssconfig.service
+    systemctl enable papssoutbound.service
+    systemctl enable papssinbound.service
 
 ### Start services
-systemctl enable papssconfig.service
-systemctl enable papssoutbound.service
-systemctl enable papssinbound.service
+    systemctl enable papssconfig.service
+    systemctl enable papssoutbound.service
+    systemctl enable papssinbound.service
 
 
 ### Check status of Systemd Service
-`sudo systemctl status papssinbound.service`
-`sudo systemctl status papssoutbound.service`
-`sudo systemctl status papssconfig.service`
+    sudo systemctl status papssinbound.service
+    sudo systemctl status papssoutbound.service
+    sudo systemctl status papssconfig.service
 
 ### Validate Configuration Service is running
-`curl -u root:s3cr3t --request GET http://localhost:8888/papss-outbound-iso-service/native`
+    curl -u root:s3cr3t --request GET http://localhost:8888/papss-outbound-iso-service/native
 
 
 <!-- ### Reset Systemd Service (If need be)
