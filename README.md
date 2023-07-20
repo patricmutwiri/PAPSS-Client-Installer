@@ -66,7 +66,7 @@
     sudo mv PAPSS-Client-Installer-main/* . && sudo rm -r PAPSS-Client-Installer-main
 
 ### Installing PAPSS Configuration Service as a systemd Service
-With the PAPSS-Configuration-Service-1.0.jar Spring Boot application installed in /var/papss/lib, to install it as a systemd service, create a script named papssconfig.service and place it in /etc/systemd/system directory. The following script offers an example:
+With the PAPSS-Configuration-Service-1.0.jar Spring Boot application installed in /var/papss/lib, to install it as a systemd service, create a script named papssconfig.service and place it in /etc/systemd/system directory.
 
     vi /etc/systemd/system/papssconfig.service
 
@@ -97,6 +97,51 @@ Check status of the papssconfig.service
 
 #### Validate Configuration Service is running
     curl -u root:s3cr3t --request GET http://localhost:8888/papss-outbound-iso-service/native
+
+### Installing PAPSS Outbound ISO Service as a systemd Service
+With the PAPSS-Outbound-ISO-Service-1.0.jar Spring Boot application installed in /var/papss/lib, to install it as a systemd service, create a script named papssoutbound.service and place it in /etc/systemd/system directory.
+
+    vi /etc/systemd/system/papssoutbound.service
+
+Copy and past the following to the `vi` terminal :
+
+    [Unit]
+    Description=PAPSS Outbound ISO Service
+    After=syslog.target
+    
+    [Service]
+    User=papss
+    Type=simple
+    Restart=on-failure
+    RestartSec=10
+    WorkingDirectory=/var/papss/lib
+    ExecStart=/bin/java -Xms2048m -Xmx4096m -jar PAPSS-Outbound-ISO-Service-1.0.jar
+    SuccessExitStatus=143
+    
+    [Install]
+    WantedBy=multi-user.target
+    
+Enable the papssoutbound.service
+    systemctl enable papssoutbound.service
+Start the papssoutbound.service
+    systemctl start papssoutbound.service
+Check status of the papssoutbound.service
+    systemctl status papssoutbound.service
+
+#### Validate PAPSS Outbound ISO Service is running
+    curl --location 'http://localhost:8881/papss/api/participantlist' \
+    --header 'Content-Type: application/json' \
+    --data '{
+        "sender": {
+            "inst_id":"NG2020"
+        },
+        "inst_id":"NG2020",
+        "participant_type" : "BANK",
+        "isOnline" : true
+    }'
+
+
+
 
 
 ### Run PAPSS Installation Script
