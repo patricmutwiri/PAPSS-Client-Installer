@@ -58,7 +58,7 @@
     sudo yum -y install java-17-openjdk
 
 ### Get PAPSS Artifacts from GitHub
-    sudo curl -O -J -L https://github.com/PapssAfrica/PAPSS-Installer/archive/refs/heads/main.zip
+    sudo curl -O -J -L https://github.com/PapssAfrica/PAPSS-Client-Installer/archive/refs/heads/main.zip
 
 ### Unzip files
     sudo unzip PAPSS-Installer-main.zip -d . && sudo rm PAPSS-Installer-main.zip
@@ -66,11 +66,7 @@
 
 ### Run PAPSS Installation Script
     cd linux
-    sudo chmod u+x papss-linux-installer.sh && ./papss-linux-installer.sh
-
-
-
-    
+    sudo chmod u+x papss-linux-installer.sh && ./papss-linux-installer.sh    
 
 
 ### Check status of Systemd Service
