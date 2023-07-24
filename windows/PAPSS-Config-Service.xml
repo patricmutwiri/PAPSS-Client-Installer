@@ -1,0 +1,9 @@
+<service>
+    <id>PAPSS-Configuration-Service</id>
+    <name>PAPSS-Configuration-Service</name>
+    <description>PAPSS Configuration Service for PAPSS REST API Middleware</description>
+    <env name="C:\var\papss\lib" value="%BASE%"/>
+    <executable>java</executable>
+    <arguments>-Xmx512m -jar "%BASE%\PAPSS-Configuration-Service-1.0.jar"</arguments>
+    <logmode>rotate</logmode>
+</service>
