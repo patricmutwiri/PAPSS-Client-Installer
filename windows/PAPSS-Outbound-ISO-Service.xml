@@ -1,0 +1,9 @@
+<service>
+    <id>PAPSS-Outbound-ISO-Service</id>
+    <name>PAPSS-Outbound-ISO-Service</name>
+    <description>PAPSS Outbound ISO Service for PAPSS REST API Middleware</description>
+    <env name="C:\var\papss\lib" value="%BASE%"/>
+    <executable>java</executable>
+    <arguments>-Xmx2056m -jar "%BASE%\PAPSS-Outbound-ISO-Service-1.0.jar"</arguments>
+    <logmode>rotate</logmode>
+</service>
