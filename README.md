@@ -222,4 +222,20 @@ https://www.postgresql.org/download/windows/
 
 Password for default postgres user s3cr3t
 
+### Set PAPSS_HOME environment variable
+
+Add Environment variable in System Properties
+
+<img width="722" alt="Screenshot 2023-07-24 at 17 37 45" src="https://github.com/PapssAfrica/PAPSS-Client-Installer/assets/2306767/08117bd2-ebe8-4379-9276-9a2ca3588137">
+
+
+Confirm PAPSS_HOME variable was added successfully
+
+<img width="633" alt="Screenshot 2023-07-24 at 17 38 24" src="https://github.com/PapssAfrica/PAPSS-Client-Installer/assets/2306767/ed22a6fe-d395-4c35-b7e5-e3a12e4b9c84">
+
+
+
+
+
+
 
