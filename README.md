@@ -92,10 +92,15 @@ Copy and past the following to the `vi` terminal :
     WantedBy=multi-user.target
 
 Enable the papssconfig.service
+
     systemctl enable papssconfig.service
+    
 Start the papssconfig.service
+
     systemctl start papssconfig.service
+    
 Check status of the papssconfig.service
+
     systemctl status papssconfig.service
 
 #### Validate Configuration Service is running
@@ -125,10 +130,14 @@ Copy and past the following to the `vi` terminal :
     WantedBy=multi-user.target
     
 Enable the papssoutbound.service
+
     systemctl enable papssoutbound.service
 Start the papssoutbound.service
+
     systemctl start papssoutbound.service
+    
 Check status of the papssoutbound.service
+
     systemctl status papssoutbound.service
 
 #### Validate PAPSS Outbound ISO Service is running
@@ -245,9 +254,41 @@ Confirm on Poweshell Command
 
     Get-ChildItem -Path Env:
 
+Run the following commands on Powershell
+
+Install PAPSS-Configuration-Service
+
+    ./PAPSS-Configuration-Service.exe install
+
+Start PAPSS-Configuration-Service
+
+    ./PAPSS-Configuration-Service.exe start
+
+Install PAPSS-Inbound-ISO-Service
+
+    ./PAPSS-Inbound-ISO-Service.exe install
+
+Start PAPSS-Inbound-ISO-Service
+
+    ./PAPSS-Inbound-ISO-Service.exe start
+Install PAPSS-Outbound-ISO-Service
+    
+    ./PAPSS-Outbound-ISO-Service.exe install
+
+Start PAPSS-Outbound-ISO-Service
+
+    ./PAPSS-Outbound-ISO-Service.exe start
 
 
+Commands that Apply to all the .EXE binaries
 
-
-
-
+Command	Description
+install	Installs the service.
+uninstall	Uninstalls the service.
+start	Starts the service.
+stop	Stops the service.
+restart	Stops and then starts the service.
+status	Checks the status of the service.
+refresh	Refreshes the service properties without reinstallation.
+customize	Customizes the wrapper executable.
+dev	Experimental commands.
