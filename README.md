@@ -167,10 +167,15 @@ Copy and past the following to the `vi` terminal :
     WantedBy=multi-user.target
     
 Enable the papssinbound.service 
+
     systemctl enable papssinbound.service 
+    
 Start the papssinbound.service 
+
     systemctl start papssinbound.service 
+    
 Check status of the papssinbound.service 
+
     systemctl status papssinbound.service
 
 #### Validate PAPSS Inbound ISO Service is running
@@ -187,8 +192,10 @@ Check status of the papssinbound.service
 
 ### Systemd Service Debug Commands
 Reset failed:
+
     systemctl reset-failed
 Reload Daemon:
+
     systemctl daemon-reload
 
 
@@ -200,19 +207,20 @@ This procedure describes how to install OpenJDK 20 for Windows using the MSI-bas
 
 #### Procedure
 
-Download the MSI-based installer of OpenJDK 20 for Windows. https://adoptium.net/download/
-Run the installer for OpenJDK 20 for Windows.
-Click Next on the welcome screen.
-Check I accept the terms in license agreement, then click Next.
-Click Next.
-Accept the defaults or review the optional properties.
-Click Install.
-Click Yes on the Do you want to allow this app to make changes on your device?.
-Verify the OpenJDK 20 for Windows is successfully installed, run java -version command in the command prompt and you must get the following output:
+1. Download the MSI-based installer of OpenJDK 20 for Windows. https://adoptium.net/download/
+2. Run the installer for OpenJDK 20 for Windows.
+3. Click Next on the welcome screen.
+4. Check I accept the terms in license agreement, then click Next.
+5. Click Next.
+6. Accept the defaults or review the optional properties.
+7. Click Install.
+8. Click Yes on the Do you want to allow this app to make changes on your device?.
+9. Verify the OpenJDK 20 for Windows is successfully installed, run `java -version` command in the command prompt and you must get the following output:
 
-```openjdk version "17" 2021-09-14 LTS
-OpenJDK Runtime Environment 21.9 (build 17+35-LTS)
-OpenJDK 64-Bit Server VM 21.9 (build 17+35-LTS, mixed mode, sharing)
+```
+    openjdk version "17" 2021-09-14 LTS
+    OpenJDK Runtime Environment 21.9 (build 17+35-LTS)
+    OpenJDK 64-Bit Server VM 21.9 (build 17+35-LTS, mixed mode, sharing)
 ``` 
 #### Tutorial https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/How-do-I-install-Java-on-Windows
 
@@ -232,6 +240,10 @@ Add Environment variable in System Properties
 Confirm PAPSS_HOME variable was added successfully
 
 <img width="633" alt="Screenshot 2023-07-24 at 17 38 24" src="https://github.com/PapssAfrica/PAPSS-Client-Installer/assets/2306767/ed22a6fe-d395-4c35-b7e5-e3a12e4b9c84">
+
+Confirm on Poweshell Command
+
+    Get-ChildItem -Path Env:
 
 
 
