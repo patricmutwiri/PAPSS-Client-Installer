@@ -5,6 +5,6 @@
     <!-- <env name="C:\Var\Papss\lib" value="%BASE%"/> -->
     <env name="PAPSS_HOME" value="%BASE%"/>
     <executable>java</executable>
-    <arguments>-Xmx512m -jar "%BASE%\PAPSS-Configuration-Service-1.0.jar" --spring.cloud.config.server.native.search-locations=file:///C:/Var/Papss/config</arguments>
+    <arguments>-Xmx512m -jar "%BASE%\lib\PAPSS-Configuration-Service-1.0.jar" --spring.cloud.config.server.native.search-locations=file:///C:/Var/Papss/config</arguments>
     <logmode>rotate</logmode>
 </service>
