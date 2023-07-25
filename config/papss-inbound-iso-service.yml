@@ -10,32 +10,21 @@ nip:
 participant:
     bic: AFXMLRLR
 participants:
-    path: /Users/lingani/IdeaProjects/papss-v2/PAPSS-Inbound-ISO-Service/src/main/resources/participants.config
+    path: /var/papss/config/participants.config
 server:
     port: 8882
-spring:
-    datasource:
-        username: postgres
-        password: s3cr3t
-        url: jdbc:postgresql://localhost:5432/papss-api-db
-        
-    flyway:
-        baseline-on-migrate: true
-        clean-on-validation-error: true
-        enabled: true
-        ignore-failed-future-migration: true
-        out-of-order: true
-        password: ${spring.datasource.password}
-        url: ${spring.datasource.url}
-        user: ${spring.datasource.username}
-        validate-on-migrate: false
-    jpa:
-        show-sql: true
-    properties:
-        hibernate:
-            ddl-auto: create
-            dialect: org.hibernate.dialect.PostgreSQL81Dialect
-            format_sql: true
 ssl:
     key:
         alias: afxm2
+
+sqlite: 
+  driverClassName: org.sqlite.JDBC
+  url: jdbc:sqlite:/var/papss/sqlite/db/papss-api-db.db
+  username: sa 
+  password: sa
+spring:
+  jpa: 
+    database-platform: com.papss.inbound.config.SQLiteDialect 
+hibernate: 
+  hbm2ddl.auto: update
+  show_sql: true
