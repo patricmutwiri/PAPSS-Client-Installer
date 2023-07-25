@@ -233,12 +233,6 @@ This procedure describes how to install OpenJDK 20 for Windows using the MSI-bas
 ``` 
 #### Tutorial https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/How-do-I-install-Java-on-Windows
 
-### Download and Install Postgres 14
-
-https://www.postgresql.org/download/windows/
-
-Password for default postgres user s3cr3t
-
 ### Set PAPSS_HOME environment variable
 
 Add Environment variable in System Properties
@@ -253,6 +247,8 @@ Confirm PAPSS_HOME variable was added successfully
 Confirm on Poweshell Command
 
     Get-ChildItem -Path Env:
+
+### Install and Start the Services
 
 Run the following commands on Powershell
 
@@ -280,15 +276,15 @@ Start PAPSS-Outbound-ISO-Service
     ./PAPSS-Outbound-ISO-Service.exe start
 
 
-Commands that Apply to all the .EXE binaries
+The following commands can be used for daily operation and maintainance of the PAPSS REST API Middleware by applying them to the the .EXE binaries as shown above:
 
-Command	Description
-install	Installs the service.
-uninstall	Uninstalls the service.
-start	Starts the service.
-stop	Stops the service.
-restart	Stops and then starts the service.
-status	Checks the status of the service.
-refresh	Refreshes the service properties without reinstallation.
-customize	Customizes the wrapper executable.
-dev	Experimental commands.
+|Command |    Description |
+|-----  |       ------ |
+|`install` |	Installs the service.|
+|`uninstall` |	Uninstalls the service.|
+|`start` |	Starts the service.|
+|`stop` |	Stops the service.|
+|`restart` |	Stops and then starts the service.|
+|`status` |	Checks the status of the service.|
+|`refresh` |	Refreshes the service properties without reinstallation.|
+|`customize` |	Customizes the wrapper executable.|
