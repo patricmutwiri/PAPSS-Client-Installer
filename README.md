@@ -233,12 +233,6 @@ This procedure describes how to install OpenJDK 20 for Windows using the MSI-bas
 ``` 
 #### Tutorial https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/How-do-I-install-Java-on-Windows
 
-### Download and Install Postgres 14
-
-https://www.postgresql.org/download/windows/
-
-Password for default postgres user s3cr3t
-
 ### Set PAPSS_HOME environment variable
 
 Add Environment variable in System Properties
