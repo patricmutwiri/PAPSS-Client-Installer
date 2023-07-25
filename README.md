@@ -284,11 +284,11 @@ Commands that Apply to all the .EXE binaries
 
 |Command |    Description |
 |-----  |       ------ |
-|install |	Installs the service.|
-|uninstall |	Uninstalls the service.|
-|start |	Starts the service.|
-|stop |	Stops the service.|
-|restart |	Stops and then starts the service.|
-|status |	Checks the status of the service.|
-|refresh |	Refreshes the service properties without reinstallation.|
-|customize |	Customizes the wrapper executable.|
+|`install` |	Installs the service.|
+|`uninstall` |	Uninstalls the service.|
+|`start` |	Starts the service.|
+|`stop` |	Stops the service.|
+|`restart` |	Stops and then starts the service.|
+|`status` |	Checks the status of the service.|
+|`refresh` |	Refreshes the service properties without reinstallation.|
+|`customize` |	Customizes the wrapper executable.|
