@@ -212,19 +212,19 @@ Reload Daemon:
 
 ### Install Java Open JDK 17
 Installing OpenJDK with the MSI installer
-This procedure describes how to install OpenJDK 20 for Windows using the MSI-based installer.
+This procedure describes how to install OpenJDK 17 for Windows using the MSI-based installer.
 
 #### Procedure
 
-1. Download the MSI-based installer of OpenJDK 20 for Windows. https://adoptium.net/download/
-2. Run the installer for OpenJDK 20 for Windows.
+1. Download the MSI-based installer of OpenJDK 17 for Windows. https://adoptium.net/download/
+2. Run the installer for OpenJDK 17 for Windows.
 3. Click Next on the welcome screen.
 4. Check I accept the terms in license agreement, then click Next.
 5. Click Next.
 6. Accept the defaults or review the optional properties.
 7. Click Install.
 8. Click Yes on the Do you want to allow this app to make changes on your device?.
-9. Verify the OpenJDK 20 for Windows is successfully installed, run `java -version` command in the command prompt and you must get the following output:
+9. Verify the OpenJDK 17 for Windows is successfully installed, run `java -version` command in the command prompt and you must get the following output:
 
 ```
     openjdk version "17" 2021-09-14 LTS
@@ -232,6 +232,10 @@ This procedure describes how to install OpenJDK 20 for Windows using the MSI-bas
     OpenJDK 64-Bit Server VM 21.9 (build 17+35-LTS, mixed mode, sharing)
 ``` 
 #### Tutorial https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/How-do-I-install-Java-on-Windows
+
+### Create Papss Home Directory
+
+Create Papss Home Directory at `C:\Var\Papss`
 
 ### Set PAPSS_HOME environment variable
 
@@ -244,9 +248,28 @@ Confirm PAPSS_HOME variable was added successfully
 
 <img width="633" alt="Screenshot 2023-07-24 at 17 38 24" src="https://github.com/PapssAfrica/PAPSS-Client-Installer/assets/2306767/ed22a6fe-d395-4c35-b7e5-e3a12e4b9c84">
 
-Confirm on Poweshell Command
+### Get PAPSS Artifacts from GitHub
 
-    Get-ChildItem -Path Env:
+On your Powershell Commandline, get the Artifacts with the following command
+
+    curl -O -J -L https://github.com/PapssAfrica/PAPSS-Client-Installer/archive/refs/heads/main.zip
+
+### Unzip files and Copy to Home Directory
+
+On your Powershell Commandline,run the following:
+
+    unzip PAPSS-Client-Installer-main.zip -d . 
+    
+    rm PAPSS-Client-Installer-main.zip
+    
+    mv PAPSS-Client-Installer-main/* .  
+    
+    rm -r PAPSS-Client-Installer-main
+
+On your Powershell Terminal
+
+
+
 
 ### Install and Start the Services
 
@@ -259,6 +282,11 @@ Install PAPSS-Configuration-Service
 Start PAPSS-Configuration-Service
 
     ./PAPSS-Configuration-Service.exe start
+
+Test Configuration Service
+
+    #### Validate Configuration Service is running
+    curl -u root:s3cr3t --request GET http://localhost:8888/papss-outbound-iso-service/native
 
 Install PAPSS-Inbound-ISO-Service
 
