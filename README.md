@@ -14,6 +14,16 @@
     sudo mkdir –m777 -p /var/papss
     cd /var/papss
 
+### Setup PAPSS_HOME
+    vi /etc/environment
+
+Add the following environment variable
+
+    PAPSS_HOME=/var/papss
+    
+
+
+
 
 
 ### Get PAPSS Artifacts from GitHub
