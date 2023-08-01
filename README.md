@@ -28,12 +28,21 @@ Confirm changesor the changes to take effect, use the command
 ### Get PAPSS Artifacts from GitHub
     sudo curl -O -J -L https://github.com/PapssAfrica/PAPSS-Client-Installer/archive/refs/heads/main.zip
 
-### Unzip files
-    sudo unzip PAPSS-Client-Installer-main.zip -d . && sudo rm PAPSS-Client-Installer-main.zip
-    sudo mv PAPSS-Client-Installer-main/* . && sudo rm -r PAPSS-Client-Installer-main
+### Unzip files and move to the PAPSS_HOME directory
+
+    sudo unzip PAPSS-Client-Installer-main.zip -d /var/papss/
+    
+    sudo rm PAPSS-Client-Installer-main.zip    
+    
+    sudo rm -r PAPSS-Client-Installer-main
+
+### Give PAPSS Installation Script execute permissions
+
+    sudo chmod u+x linux/papss-linux-installer.sh 
 
 ### Run PAPSS Installation Script
-    sudo chmod u+x linux/papss-linux-installer.sh && ./linux/papss-linux-installer.sh  
+    
+    sh /linux/papss-linux-installer.sh  
 
 ### Installing PAPSS Configuration Service as a systemd Service
 With the PAPSS-Configuration-Service-1.0.jar Spring Boot application installed in /var/papss/lib, to install it as a systemd service, create a script named papssconfig.service and place it in /etc/systemd/system directory.
@@ -58,9 +67,17 @@ Copy and past the following to the `vi` terminal :
     [Install]
     WantedBy=multi-user.target
 
+Give /etc/systemd/system/papssconfig.service permissions
+
+    chmod 777 /etc/systemd/system/papssconfig.service
+
 Enable the papssconfig.service
 
     systemctl enable papssconfig.service
+
+Reload Daemon:
+
+    systemctl daemon-reload
     
 Start the papssconfig.service
 
@@ -96,9 +113,18 @@ Copy and past the following to the `vi` terminal :
     [Install]
     WantedBy=multi-user.target
     
+Give /etc/systemd/system/papssoutbound.service permissions
+
+    chmod 777 /etc/systemd/system/papssoutbound.service
+
 Enable the papssoutbound.service
 
     systemctl enable papssoutbound.service
+
+Reload Daemon:
+
+    systemctl daemon-reload
+    
 Start the papssoutbound.service
 
     systemctl start papssoutbound.service
@@ -141,10 +167,18 @@ Copy and past the following to the `vi` terminal :
     
     [Install]
     WantedBy=multi-user.target
+
+Give /etc/systemd/system/papssoutbound.service permissions
+
+    chmod 777 /etc/systemd/system/papssoutbound.service
     
 Enable the papssinbound.service 
 
     systemctl enable papssinbound.service 
+
+Reload Daemon:
+
+    systemctl daemon-reload
     
 Start the papssinbound.service 
 
@@ -170,6 +204,7 @@ Check status of the papssinbound.service
 Reset failed:
 
     systemctl reset-failed
+    
 Reload Daemon:
 
     systemctl daemon-reload
