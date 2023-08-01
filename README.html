@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="papss-middleware-installer">PAPSS-Middleware-Installer</h1>
+<h2 id="redhat-linux-installation">Redhat Linux Installation</h2>
+<h3 id="run-following-commands">Run following commands</h3>
+<h3 id="install-the-postgresql-software">Install the PostgreSQL Software</h3>
+<pre><code>Open the distribution .repo file in vi:
+
+sudo vi /etc/yum.repos.d/CentOS-Base.repo
+
+Exclude PostgreSQL by appending the following line to both the [base] and [updates] sections:
+
+exclude=postgresql*
+
+Download and install the PGDG file from postgresql.org:
+
+sudo yum -y install https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+
+Install PostgreSQL 12:
+
+sudo yum install -y postgresql12-server postgresql12-contrib
+</code></pre>
+<h3 id="initialize-the-database">Initialize the Database</h3>
+<pre><code>Initialize the database:
+
+sudo /usr/pgsql-12/bin/postgresql-12-setup initdb
+
+Start and enable the postgresql-12 service:
+
+sudo systemctl start postgresql-12
+sudo systemctl enable postgresql-12
+</code></pre>
+<h3 id="install-unzip-package">Install Unzip package</h3>
+<pre><code>sudo yum -y install unzip
+</code></pre>
+<h3 id="install-java-software">Install Java Software</h3>
+<pre><code>sudo yum -y install java-17-openjdk
+</code></pre>
+<h3 id="create-papss-middleware-directory-and-cd-to-it">Create PAPSS Middleware directory and cd to it</h3>
+<pre><code>sudo mkdir –m777 -p /var/papss
+cd /var/papss
+</code></pre>
+<h3 id="get-papss-artifacts-from-github">Get PAPSS Artifacts from GitHub</h3>
+<pre><code>sudo curl -O -J -L https://github.com/PapssAfrica/PAPSS-Client-Installer/archive/refs/heads/main.zip
+</code></pre>
+<h3 id="unzip-files">Unzip files</h3>
+<pre><code>sudo unzip PAPSS-Client-Installer-main.zip -d . &amp;&amp; sudo rm PAPSS-Client-Installer-main.zip
+sudo mv PAPSS-Client-Installer-main/* . &amp;&amp; sudo rm -r PAPSS-Client-Installer-main
+</code></pre>
+<h3 id="run-papss-installation-script">Run PAPSS Installation Script</h3>
+<pre><code>sudo chmod u+x linux/papss-linux-installer.sh &amp;&amp; ./linux/papss-linux-installer.sh  
+</code></pre>
+<h3 id="installing-papss-configuration-service-as-a-systemd-service">Installing PAPSS Configuration Service as a systemd Service</h3>
+<p>With the PAPSS-Configuration-Service-1.0.jar Spring Boot application installed in /var/papss/lib, to install it as a systemd service, create a script named papssconfig.service and place it in /etc/systemd/system directory.</p>
+<pre><code>vi /etc/systemd/system/papssconfig.service
+</code></pre>
+<p>Copy and past the following to the <code>vi</code> terminal :</p>
+<pre><code>[Unit]
+Description=PAPSS Configuration Service
+After=syslog.target
+
+[Service]
+User=papss
+Type=simple
+Restart=on-failure
+RestartSec=10
+WorkingDirectory=/var/papss/lib
+ExecStart=/bin/java -Xms1024m -Xmx2048m -jar PAPSS-Configuration-Service-1.0.jar --spring.cloud.config.server.native.search-locations=file:///var/papss/config
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<p>Enable the papssconfig.service</p>
+<pre><code>systemctl enable papssconfig.service
+</code></pre>
+<p>Start the papssconfig.service</p>
+<pre><code>systemctl start papssconfig.service
+</code></pre>
+<p>Check status of the papssconfig.service</p>
+<pre><code>systemctl status papssconfig.service
+</code></pre>
+<h4 id="validate-configuration-service-is-running">Validate Configuration Service is running</h4>
+<pre><code>curl -u root:s3cr3t --request GET http://localhost:8888/papss-outbound-iso-service/native
+</code></pre>
+<h3 id="installing-papss-outbound-iso-service-as-a-systemd-service">Installing PAPSS Outbound ISO Service as a systemd Service</h3>
+<p>With the PAPSS-Outbound-ISO-Service-1.0.jar Spring Boot application installed in /var/papss/lib, to install it as a systemd service, create a script named papssoutbound.service and place it in /etc/systemd/system directory.</p>
+<pre><code>vi /etc/systemd/system/papssoutbound.service
+</code></pre>
+<p>Copy and past the following to the <code>vi</code> terminal :</p>
+<pre><code>[Unit]
+Description=PAPSS Outbound ISO Service
+After=syslog.target
+
+[Service]
+User=papss
+Type=simple
+Restart=on-failure
+RestartSec=10
+WorkingDirectory=/var/papss/lib
+ExecStart=/bin/java -Xms1024m -Xmx2048m -jar PAPSS-Outbound-ISO-Service-1.0.jar
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<p>Enable the papssoutbound.service</p>
+<pre><code>systemctl enable papssoutbound.service
+</code></pre>
+<p>Start the papssoutbound.service</p>
+<pre><code>systemctl start papssoutbound.service
+</code></pre>
+<p>Check status of the papssoutbound.service</p>
+<pre><code>systemctl status papssoutbound.service
+</code></pre>
+<h4 id="validate-papss-outbound-iso-service-is-running">Validate PAPSS Outbound ISO Service is running</h4>
+<pre><code>curl --location 'http://localhost:8881/papss/api/participantlist' \
+--header 'Content-Type: application/json' \
+--data '{
+    &quot;sender&quot;: {
+        &quot;inst_id&quot;:&quot;NG2020&quot;
+    },
+    &quot;inst_id&quot;:&quot;NG2020&quot;,
+    &quot;participant_type&quot; : &quot;BANK&quot;,
+    &quot;isOnline&quot; : true
+}'
+</code></pre>
+<h3 id="installing-papss-inbound-iso-service-as-a-systemd-service">Installing PAPSS Inbound ISO Service as a systemd Service</h3>
+<p>With the PAPSS-Inbound-ISO-Service-1.0.jar Spring Boot application installed in /var/papss/lib, to install it as a systemd service, create a script named papssinbound.service and place it in /etc/systemd/system directory.</p>
+<pre><code>vi /etc/systemd/system/papssinbound.service
+</code></pre>
+<p>Copy and past the following to the <code>vi</code> terminal :</p>
+<pre><code>[Unit]
+Description=PAPSS Inbound ISO Service
+After=syslog.target
+
+[Service]
+User=papss
+Type=simple
+Restart=on-failure
+RestartSec=10
+WorkingDirectory=/var/papss/lib
+ExecStart=/bin/java -Xms1024m -Xmx2048m -jar PAPSS-Inbound-ISO-Service-1.0.jar
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<p>Enable the papssinbound.service</p>
+<pre><code>systemctl enable papssinbound.service 
+</code></pre>
+<p>Start the papssinbound.service</p>
+<pre><code>systemctl start papssinbound.service 
+</code></pre>
+<p>Check status of the papssinbound.service</p>
+<pre><code>systemctl status papssinbound.service
+</code></pre>
+<h4 id="validate-papss-inbound-iso-service-is-running">Validate PAPSS Inbound ISO Service is running</h4>
+<pre><code>curl --location 'http://localhost:8881/papss/api/participantlist' \
+--header 'Content-Type: application/json' \
+--data '{
+    &quot;sender&quot;: {
+        &quot;inst_id&quot;:&quot;NG2020&quot;
+    },
+    &quot;inst_id&quot;:&quot;NG2020&quot;,
+    &quot;participant_type&quot; : &quot;BANK&quot;,
+    &quot;isOnline&quot; : true
+}'
+</code></pre>
+<h3 id="systemd-service-debug-commands">Systemd Service Debug Commands</h3>
+<p>Reset failed:</p>
+<pre><code>systemctl reset-failed
+</code></pre>
+<p>Reload Daemon:</p>
+<pre><code>systemctl daemon-reload
+</code></pre>
+<h2 id="windows-server-2019-installation">Windows Server 2019 Installation</h2>
+<h3 id="install-java-open-jdk-17">Install Java Open JDK 17</h3>
+<p>Installing OpenJDK with the MSI installer
+This procedure describes how to install OpenJDK 20 for Windows using the MSI-based installer.</p>
+<h4 id="procedure">Procedure</h4>
+<ol>
+<li>Download the MSI-based installer of OpenJDK 20 for Windows. https://adoptium.net/download/</li>
+<li>Run the installer for OpenJDK 20 for Windows.</li>
+<li>Click Next on the welcome screen.</li>
+<li>Check I accept the terms in license agreement, then click Next.</li>
+<li>Click Next.</li>
+<li>Accept the defaults or review the optional properties.</li>
+<li>Click Install.</li>
+<li>Click Yes on the Do you want to allow this app to make changes on your device?.</li>
+<li>Verify the OpenJDK 20 for Windows is successfully installed, run <code>java -version</code> command in the command prompt and you must get the following output:</li>
+</ol>
+<pre class="hljs"><code><div>    openjdk version &quot;17&quot; 2021-09-14 LTS
+    OpenJDK Runtime Environment 21.9 (build 17+35-LTS)
+    OpenJDK 64-Bit Server VM 21.9 (build 17+35-LTS, mixed mode, sharing)
+</div></code></pre>
+<h4 id="tutorial-httpswwwtheserversidecomblogcoffee-talk-java-news-stories-and-opinionshow-do-i-install-java-on-windows">Tutorial https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/How-do-I-install-Java-on-Windows</h4>
+<h3 id="set-papsshome-environment-variable">Set PAPSS_HOME environment variable</h3>
+<p>Add Environment variable in System Properties</p>
+<img width="722" alt="Screenshot 2023-07-24 at 17 37 45" src="https://github.com/PapssAfrica/PAPSS-Client-Installer/assets/2306767/08117bd2-ebe8-4379-9276-9a2ca3588137">
+<p>Confirm PAPSS_HOME variable was added successfully</p>
+<img width="633" alt="Screenshot 2023-07-24 at 17 38 24" src="https://github.com/PapssAfrica/PAPSS-Client-Installer/assets/2306767/ed22a6fe-d395-4c35-b7e5-e3a12e4b9c84">
+<p>Confirm on Poweshell Command</p>
+<pre><code>Get-ChildItem -Path Env:
+</code></pre>
+<h3 id="install-and-start-the-services">Install and Start the Services</h3>
+<p>Run the following commands on Powershell</p>
+<p>Install PAPSS-Configuration-Service</p>
+<pre><code>./PAPSS-Configuration-Service.exe install
+</code></pre>
+<p>Start PAPSS-Configuration-Service</p>
+<pre><code>./PAPSS-Configuration-Service.exe start
+</code></pre>
+<p>Install PAPSS-Inbound-ISO-Service</p>
+<pre><code>./PAPSS-Inbound-ISO-Service.exe install
+</code></pre>
+<p>Start PAPSS-Inbound-ISO-Service</p>
+<pre><code>./PAPSS-Inbound-ISO-Service.exe start
+</code></pre>
+<p>Install PAPSS-Outbound-ISO-Service</p>
+<pre><code>./PAPSS-Outbound-ISO-Service.exe install
+</code></pre>
+<p>Start PAPSS-Outbound-ISO-Service</p>
+<pre><code>./PAPSS-Outbound-ISO-Service.exe start
+</code></pre>
+<p>The following commands can be used for daily operation and maintainance of the PAPSS REST API Middleware by applying them to the the .EXE binaries as shown above:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>install</code></td>
+<td>Installs the service.</td>
+</tr>
+<tr>
+<td><code>uninstall</code></td>
+<td>Uninstalls the service.</td>
+</tr>
+<tr>
+<td><code>start</code></td>
+<td>Starts the service.</td>
+</tr>
+<tr>
+<td><code>stop</code></td>
+<td>Stops the service.</td>
+</tr>
+<tr>
+<td><code>restart</code></td>
+<td>Stops and then starts the service.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>Checks the status of the service.</td>
+</tr>
+<tr>
+<td><code>refresh</code></td>
+<td>Refreshes the service properties without reinstallation.</td>
+</tr>
+<tr>
+<td><code>customize</code></td>
+<td>Customizes the wrapper executable.</td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>

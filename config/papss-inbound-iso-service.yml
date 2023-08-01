@@ -1,30 +1,30 @@
-clearing:
-    system:
-        member:
-            id: XA0001
-funds:
-    transfer:
-        success: ACCP
-nip:
-    url: http://10.7.7.204:9090/api/v1/outward
-participant:
-    bic: AFXMLRLR
+papss:
+  system:
+    toClearingSystemId: XA0001
+    pollingSleepTime: 5000
+    fundsTransferSuccess: ACCP
+    sslKeyAlias: afxm1
+    coreUrl: 
+        fundsTransfer: http://example.com:9090/api/v1/inbound/fundstransfercredit
+        transactionConfirmation: http://example.com:9090/api/v1/inbound/txnconfirmation
+        nameInquiry: http://example.com:9090/api/v1/inbound/nameenquiry
+        fundsReversalRequest: http://example.com:9090/api/v1/inbound/fundsreversal
+
 participants:
     path: /var/papss/config/participants.config
-server:
-    port: 8882
-ssl:
-    key:
-        alias: afxm2
 
 sqlite: 
   driverClassName: org.sqlite.JDBC
-  url: jdbc:sqlite:/var/papss/sqlite/db/papss-api-db.db
+  url: jdbc:sqlite:/var/papss/db/sqlite/papss-in-db.db
   username: sa 
   password: sa
+
 spring:
   jpa: 
     database-platform: com.papss.inbound.config.SQLiteDialect 
 hibernate: 
   hbm2ddl.auto: update
   show_sql: true
+
+server:
+  port: 8882
