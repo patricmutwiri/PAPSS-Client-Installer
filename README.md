@@ -90,7 +90,7 @@ Copy and past the following to the `vi` terminal :
     Restart=on-failure
     RestartSec=10
     WorkingDirectory=/var/papss/lib
-    ExecStart=/bin/java -Xms1024m -Xmx2048m -jar PAPSS-Outbound-ISO-Service-1.0.jar
+    ExecStart=/bin/java -Dcom.montran.config.dir=/var/papss/config -Xms1024m -Xmx2048m -jar PAPSS-Outbound-ISO-Service-1.0.jar
     SuccessExitStatus=143
     
     [Install]
@@ -136,7 +136,7 @@ Copy and past the following to the `vi` terminal :
     Restart=on-failure
     RestartSec=10
     WorkingDirectory=/var/papss/lib
-    ExecStart=/bin/java -Xms1024m -Xmx2048m -jar PAPSS-Inbound-ISO-Service-1.0.jar
+    ExecStart=/bin/java -Dcom.montran.config.dir=/var/papss/config -Xms1024m -Xmx2048m -jar PAPSS-Inbound-ISO-Service-1.0.jar
     SuccessExitStatus=143
     
     [Install]
