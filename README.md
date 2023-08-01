@@ -15,16 +15,15 @@
     cd /var/papss
 
 ### Setup PAPSS_HOME
-    vi /etc/environment
+    vi /etc/profile
 
 Add the following environment variable
 
-    PAPSS_HOME=/var/papss
-    
+    export PAPSS_HOME=/var/papss
 
+Confirm changesor the changes to take effect, use the command 
 
-
-
+    env
 
 ### Get PAPSS Artifacts from GitHub
     sudo curl -O -J -L https://github.com/PapssAfrica/PAPSS-Client-Installer/archive/refs/heads/main.zip
