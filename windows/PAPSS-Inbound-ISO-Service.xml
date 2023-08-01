@@ -4,7 +4,7 @@
     <description>PAPSS Inbound ISO Service for PAPSS REST API Middleware</description>
     <env name="C:\var\papss\lib" value="%BASE%"/>
     <executable>java</executable>
-    <arguments>-Dcom.montran.config.dir=/var/papss/config -Xms1024m -Xmx2056m -jar "C:\Var\Papss\lib\PAPSS-Inbound-ISO-Service-1.0.jar"</arguments>
+    <arguments>-Dcom.montran.config.dir=C:\Var\Papss\config -Xms1024m -Xmx2056m -Dorg.sqlite.tmpdir=C:\Var\Papss\db\sqlite\tmp -jar "C:\Var\Papss\lib\PAPSS-Inbound-ISO-Service-1.0.jar"</arguments>
     <logmode>rotate</logmode>
     <logpath>C:\Var\Papss\logs</logpath>
 </service>
