@@ -42,4 +42,4 @@ build/
 .DS_Store
 
 /logs/
-/sqlite/db/
+/db/

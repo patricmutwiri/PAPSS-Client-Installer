@@ -193,10 +193,13 @@ Check status of the papssinbound.service
 
 This is achieved by checking the logs to confirm that the polling mechanish is running every 5 seconds
 
+
+    ```
     2023-08-01 19:22:31,182 INFO  [default_task_executor_thread1] com.papss.inbound.executor.MessagePollExecutor: ++++++++++++++Polling messages for papss ID: NG2020 with thread: default_task_executor_thread1
     2023-08-01 19:22:31,182 INFO  [default_task_executor_thread1] com.montran.core.security.SecurityConfig: No value specified for: sslKeyPass
     2023-08-01 19:22:31,183 INFO  [default_task_executor_thread1] com.montran.core.security.SecurityConfig: No value specified for key pass (sslKeyPass). Defaulting to (keyPass)
     2023-08-01 19:22:31,187 INFO  [default_task_executor_thread1] com.papss.inbound.executor.MessagePollExecutor: +++++++++++++++++++Connection established for NG2020 with  sslKeyAlias afxm1
+    ```
 
 
 ### Systemd Service Debug Commands
@@ -210,8 +213,8 @@ Reload Daemon:
 
 Getting latest Artifacts
 
-sudo curl -O -J -L https://github.com/PapssAfrica/PAPSS-Client-Installer/raw/main/lib/PAPSS-Inbound-ISO-Service-1.0.jar
-sudo curl -O -J -L https://github.com/PapssAfrica/PAPSS-Client-Installer/raw/main/lib/PAPSS-Outbound-ISO-Service-1.0.jar
+    sudo curl -O -J -L https://github.com/PapssAfrica/PAPSS-Client-Installer/raw/main/lib/PAPSS-Inbound-ISO-Service-1.0.jar
+    sudo curl -O -J -L https://github.com/PapssAfrica/PAPSS-Client-Installer/raw/main/lib/PAPSS-Outbound-ISO-Service-1.0.jar
 
 
 ## Windows Server 2019 Installation

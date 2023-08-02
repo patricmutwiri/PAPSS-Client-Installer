@@ -13,15 +13,23 @@ papss:
 participants:
     path: /var/papss/config/participants.config
 
-sqlite: 
-  driverClassName: org.sqlite.JDBC
-  url: jdbc:sqlite:/var/papss/db/sqlite/papss-in-db.db
-  username: sa 
-  password: sa
+# sqlite: 
+#   driverClassName: org.sqlite.JDBC
+#   url: jdbc:sqlite:/var/papss/db/sqlite/papss-in-db.db
+#   username: sa 
+#   password: sa
 
 spring:
-  jpa: 
-    database-platform: com.papss.inbound.config.SQLiteDialect 
+  datasource:
+    url: jdbc:h2:file:/var/papss/db/papss-in-db
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console.enabled: true
+
 hibernate: 
   hbm2ddl.auto: update
   show_sql: true
