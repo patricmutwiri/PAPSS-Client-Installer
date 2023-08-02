@@ -193,14 +193,12 @@ Check status of the papssinbound.service
 
 This is achieved by checking the logs to confirm that the polling mechanish is running every 5 seconds
 
-
     ```
     2023-08-01 19:22:31,182 INFO  [default_task_executor_thread1] com.papss.inbound.executor.MessagePollExecutor: ++++++++++++++Polling messages for papss ID: NG2020 with thread: default_task_executor_thread1
     2023-08-01 19:22:31,182 INFO  [default_task_executor_thread1] com.montran.core.security.SecurityConfig: No value specified for: sslKeyPass
     2023-08-01 19:22:31,183 INFO  [default_task_executor_thread1] com.montran.core.security.SecurityConfig: No value specified for key pass (sslKeyPass). Defaulting to (keyPass)
     2023-08-01 19:22:31,187 INFO  [default_task_executor_thread1] com.papss.inbound.executor.MessagePollExecutor: +++++++++++++++++++Connection established for NG2020 with  sslKeyAlias afxm1
     ```
-
 
 ### Systemd Service Debug Commands
 Reset failed:
@@ -257,32 +255,24 @@ Confirm PAPSS_HOME variable was added successfully
 
 <img width="633" alt="Screenshot 2023-07-24 at 17 38 24" src="https://github.com/PapssAfrica/PAPSS-Client-Installer/assets/2306767/ed22a6fe-d395-4c35-b7e5-e3a12e4b9c84">
 
-### Get PAPSS Artifacts from GitHub
+### Download PAPSS Artifacts from GitHub
 
-On your Powershell Commandline, get the Artifacts with the following command
+Download the Artifacts with the following url
 
-    curl -O -J -L https://github.com/PapssAfrica/PAPSS-Client-Installer/archive/refs/heads/main.zip
+    https://github.com/PapssAfrica/PAPSS-Client-Installer
+
+<img width="1400" alt="Screenshot 2023-08-02 at 11 44 37" src="https://github.com/PapssAfrica/PAPSS-Client-Installer/assets/2306767/ad093b31-270d-4533-88ed-378a19798f16">
+
 
 ### Unzip files and Copy to Home Directory
 
-On your Powershell Commandline,run the following:
-
-    unzip PAPSS-Client-Installer-main.zip -d . 
-    
-    rm PAPSS-Client-Installer-main.zip
-    
-    mv PAPSS-Client-Installer-main/* .  
-    
-    rm -r PAPSS-Client-Installer-main
-
-On your Powershell Terminal
-
-
-
+Unzip the downloaded `PAPSS-Client-Installer-main.zip` file and copy all the contents of this directory to `C:\Var\Papss` folder
 
 ### Install and Start the Services
 
 Run the following commands on Powershell
+
+    cd C:\Var\Papss\windows
 
 Install PAPSS-Configuration-Service
 
