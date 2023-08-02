@@ -134,15 +134,16 @@ Check status of the papssoutbound.service
     systemctl status papssoutbound.service
 
 #### Validate PAPSS Outbound ISO Service is running
-    curl --location 'http://localhost:8881/papss/api/participantlist' \
+
+    curl --location 'localhost:8881/papss/api/v1/outward/participantlist' \
     --header 'Content-Type: application/json' \
     --data '{
         "sender": {
-            "inst_id":"NG2020"
+            "inst_id": "NG2020"
         },
-        "inst_id":"NG2020",
-        "participant_type" : "BANK",
-        "isOnline" : true
+        "inst_id": "NG2020",
+        "participant_type": "BANK",
+        "isOnline": true
     }'
 
 ### Installing PAPSS Inbound ISO Service as a systemd Service
@@ -189,16 +190,14 @@ Check status of the papssinbound.service
     systemctl status papssinbound.service
 
 #### Validate PAPSS Inbound ISO Service is running
-    curl --location 'http://localhost:8881/papss/api/participantlist' \
-    --header 'Content-Type: application/json' \
-    --data '{
-        "sender": {
-            "inst_id":"NG2020"
-        },
-        "inst_id":"NG2020",
-        "participant_type" : "BANK",
-        "isOnline" : true
-    }'
+
+This is achieved by checking the logs to confirm that the polling mechanish is running every 5 seconds
+
+    2023-08-01 19:22:31,182 INFO  [default_task_executor_thread1] com.papss.inbound.executor.MessagePollExecutor: ++++++++++++++Polling messages for papss ID: NG2020 with thread: default_task_executor_thread1
+    2023-08-01 19:22:31,182 INFO  [default_task_executor_thread1] com.montran.core.security.SecurityConfig: No value specified for: sslKeyPass
+    2023-08-01 19:22:31,183 INFO  [default_task_executor_thread1] com.montran.core.security.SecurityConfig: No value specified for key pass (sslKeyPass). Defaulting to (keyPass)
+    2023-08-01 19:22:31,187 INFO  [default_task_executor_thread1] com.papss.inbound.executor.MessagePollExecutor: +++++++++++++++++++Connection established for NG2020 with  sslKeyAlias afxm1
+
 
 ### Systemd Service Debug Commands
 Reset failed:
