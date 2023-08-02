@@ -209,6 +209,11 @@ Reload Daemon:
 
     systemctl daemon-reload
 
+Getting latest Artifacts
+
+sudo curl -O -J -L https://github.com/PapssAfrica/PAPSS-Client-Installer/raw/main/lib/PAPSS-Inbound-ISO-Service-1.0.jar
+sudo curl -O -J -L https://github.com/PapssAfrica/PAPSS-Client-Installer/raw/main/lib/PAPSS-Outbound-ISO-Service-1.0.jar
+
 
 ## Windows Server 2019 Installation
 
